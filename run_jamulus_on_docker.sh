@@ -16,7 +16,8 @@ echo \
 
 sudo apt-get update
 
-sudo apt-get install docker-ce docker-ce-cli containerd.io
+sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+sudo apt upgrade
 
 
 docker pull grundic/jamulus
@@ -24,7 +25,7 @@ mkdir jam
 mkdir jam/recordings
 curl "https://raw.githubusercontent.com/adamane/Jamulus-deploy/main/welcome.txt" > $(pwd)/jam/welcome.txt
 curl "https://raw.githubusercontent.com/adamane/Jamulus-deploy/main/toggle_rec.sh" > $(pwd)/toggle_rec.sh
-sudo chmod +x toggle_rec.sh
+sudo chmod +x $(pwd)/toggle_rec.sh
 
 sudo docker run \
     -e TZ=Europe/Berlin \
@@ -33,4 +34,10 @@ sudo docker run \
     -p 22124:22124/udp \
     -v $(pwd)/jam:/jam \
     grundic/jamulus \
-    -n -s -p 22124 -l /jam/jamulus.log -w /jam/welcome.txt -R /jam/recordings --norecord
+    -n \
+    -s \ 
+    -p 22124 \
+    -l /jam/jamulus.log \
+    -w /jam/welcome.txt \
+    -R /jam/recordings \
+    --norecord
