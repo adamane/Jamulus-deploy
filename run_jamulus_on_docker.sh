@@ -33,11 +33,4 @@ sudo docker run \
     -d --rm \
     -p 22124:22124/udp \
     -v $(pwd)/jam:/jam \
-    grundic/jamulus \
-    -n \
-    -s \ 
-    -p 22124 \
-    -l /jam/jamulus.log \
-    -w /jam/welcome.txt \
-    -R /jam/recordings \
-    --norecord
+    grundic/jamulus -n -s -p 22124 -l /jam/jamulus.log -w /jam/welcome.txt -R /jam/recordings --norecord
