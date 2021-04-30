@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker kill jam --signal="SIGUSR2" jamulus
+docker kill --signal="SIGUSR2" jamulus
