@@ -52,6 +52,8 @@ def main():
             new_config["usePubKey"] = True
             new_config["pubKeyName"] = str(
                 input("Please enter the Name of the PubKey in HEZTNER" + addendum("pubKeyName")))
+            new_config["pubKeyPlace"] = str(
+                input("Please enter the local path to the private Key "+addendum("pubKeyPlace")))
             break
         elif usePubKey == "NO":
             new_config["usePubKey"] = False
@@ -68,6 +70,8 @@ def main():
     if new_config["usePubKey"]:
         if new_config["pubKeyName"] == "":
             new_config["pubKeyName"] = config["pubKeyName"]
+        if new_config["pubKeyPlace"] == "":
+            new_config["pubKeyPlace"] = config["pubKeyPlace"]
 
     while True:
         if new_config["api_key"] == "" or new_config["api_key"] == "THIS_IS_SAMPLETEXT":
