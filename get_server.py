@@ -3,6 +3,7 @@ from hcloud.images.domain import Image
 from hcloud.server_types.domain import ServerType
 from hcloud.locations.domain import Location
 from hcloud.ssh_keys.client import SSHKeysClient
+
 import random
 import json
 import sys
@@ -17,6 +18,7 @@ serverName = config["name"] + str(random.randint(1000,9999))
 client = Client(token=config["api_key"])  # Please paste your API token here between the quotes
 if config["usePubKey"]:
     key = SSHKeysClient(client).get_by_name(config["pubKeyName"])
+
 else:
     key = None
 response = client.servers.create(name=serverName,
