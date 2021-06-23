@@ -23,9 +23,9 @@ sudo apt upgrade -y
 docker pull grundic/jamulus
 mkdir jam
 mkdir jam/recordings
-curl "https://raw.githubusercontent.com/adamane/Jamulus-deploy/main/welcome.txt" > $(pwd)/jam/welcome.txt
-curl "https://raw.githubusercontent.com/adamane/Jamulus-deploy/main/toggle_rec.sh" > $(pwd)/toggle_rec.sh
-curl "https://raw.githubusercontent.com/adamane/Jamulus-deploy/main/install_appliences.sh" > $(pwd)/install_appliences.sh
+curl "https://raw.githubusercontent.com/adamane/Jamulus-deploy/main/serverfiles/welcome.txt" > $(pwd)/jam/welcome.txt
+curl "https://raw.githubusercontent.com/adamane/Jamulus-deploy/main/serverfiles/toggle_rec.sh" > $(pwd)/toggle_rec.sh
+curl "https://raw.githubusercontent.com/adamane/Jamulus-deploy/main/serverfiles/install_appliences.sh" > $(pwd)/install_appliences.sh
 echo "
 #!/bin/bash
 sudo docker run \
