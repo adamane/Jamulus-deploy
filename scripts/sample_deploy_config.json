@@ -1,0 +1,8 @@
+{
+  "name": "jamserver",
+  "location": "nbg1",
+  "usePubKey": "NO",
+  "api_key": "THIS_IS_SAMPLETEXT",
+  "type": "cpx21",
+  "image": "ubuntu-20.04"
+}
