@@ -1,0 +1,65 @@
+name: Release-Docker
+
+# Controls when the action will run. 
+on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+
+env:
+  # Use docker.io for Docker Hub if empty
+  REGISTRY: ghcr.io
+  # github.repository as <account>/<repo>
+  IMAGE_NAME: ${{ github.repository }}
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+        # checkout the Repo
+        - uses: actions/checkout@v2
+
+        # Login against a Docker registry except on PR
+        # https://github.com/docker/login-action
+        - name: Log into registry ${{ env.REGISTRY }}
+          uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+          with:
+            registry: ${{ env.REGISTRY }}
+            username: ${{ github.actor }}
+            password: ${{ secrets.GITHUB_TOKEN }}
+
+        # Extract metadata (tags, labels) for Docker
+        # https://github.com/docker/metadata-action
+        - name: Extract Docker metadata
+          id: meta
+          uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
+          with:
+            images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+        # Extract the Version number from the Dockerfile or check a file for an tag
+        - name: get Version number or check Tag-overwrite
+          id: bash-regex
+          run: |
+            overwrite=$(cat Docker-tag-overwrite)
+            if [ -n $overwrite ]
+            then
+              Write-Output "::set-output name=VERSION::$overwrite"
+            else
+              version=$(grep -oP "ENV JAMULUS_VERSION\s+\K\S+" Dockerfile)
+              Write-Output "::set-output name=VERSION::$version"
+            fi
+
+        - name: Build and push Docker image
+          uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+          with:
+            context: .
+            push: True 
+            tags: ${{ steps.bash-regex.output.VERSION }}
+            labels: ${{ steps.meta.outputs.labels }}
