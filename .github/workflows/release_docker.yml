@@ -50,10 +50,10 @@ jobs:
             overwrite=$(cat Docker-tag-overwrite)
             if [ -n $overwrite ]
             then
-              Write-Output "::set-output name=VERSION::$overwrite"
+              echo "::set-output name=VERSION::$overwrite"
             else
               version=$(grep -oP "ENV JAMULUS_VERSION\s+\K\S+" Dockerfile)
-              Write-Output "::set-output name=VERSION::$version"
+              echo "::set-output name=VERSION::$version"
             fi
 
         - name: Build and push Docker image
