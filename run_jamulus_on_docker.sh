@@ -34,7 +34,7 @@ sudo docker run \
     -d --rm \
     -p 22124:22124/udp \
     -v $(pwd)/jam:/jam \
-    adamane/jamulus_contakt:3.7 -n -s -p 22124 -l /jam/jamulus.log -w /jam/welcome.txt -R /jam/recordings --norecord -u 50" > run_server.sh
+    ghcr.io/adamane/jamulus_contakt:3.7 -n -s -p 22124 -l /jam/jamulus.log -w /jam/welcome.txt -R /jam/recordings --norecord -u 50" > run_server.sh
 sudo chmod +x $(pwd)/toggle_rec.sh
 sudo chmod +x $(pwd)/run_server.sh
 sudo chmod +x $(pwd)/install_appliences.sh

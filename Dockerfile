@@ -41,7 +41,7 @@ RUN apk add --update --no-cache \
 
 COPY --from=builder /usr/local/bin/Jamulus /usr/local/bin/Jamulus
 LABEL org.opencontainers.image.source https://github.com/adamane/Jamulus-deploy
-EXPOSE 22124
+EXPOSE 22124/udp
 ENTRYPOINT ["Jamulus"]
 
 # MIT License
