@@ -61,5 +61,5 @@ jobs:
           with:
             context: .
             push: True 
-            tags: ${{ steps.bash-regex.output.VERSION }}
+            tag: ${{ steps.bash-regex.output.VERSION }}
             labels: ${{ steps.meta.outputs.labels }}
