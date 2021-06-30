@@ -1,4 +1,4 @@
-# Thank you to @grundic on github for this Dockerfile
+# Thank you to @grundic on github for this Dockerfile for me to modify
 # check it out at github.com/grundic/jamulus-docker
 FROM alpine:3.11 as builder
 
@@ -40,6 +40,8 @@ RUN apk add --update --no-cache \
     qt5-qtbase-x11 icu-libs tzdata
 
 COPY --from=builder /usr/local/bin/Jamulus /usr/local/bin/Jamulus
+LABEL org.opencontainers.image.source https://github.com/adamane/Jamulus-deploy
+EXPOSE 22124
 ENTRYPOINT ["Jamulus"]
 
 # MIT License
