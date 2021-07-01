@@ -61,5 +61,5 @@ jobs:
           with:
             context: .
             push: True 
-            tag: ${{ steps.bash-regex.output.VERSION }}
+            tags: ghcr.io/adamane/jamulus_contakt:${{ steps.bash-regex.output.VERSION }}
             labels: ${{ steps.meta.outputs.labels }}
