@@ -63,7 +63,7 @@ jobs:
             context: .
             push: True
             labels: ${{ steps.meta.outputs.labels }} 
-            tags: ghcr.io/adamane/jamulus_contakt:latest
+            tags: ghcr.io/adamane/jamulus_contakt:${{  steps.bash-regex.outputs.VERSION  }}
             
         
         - name: Image digest 
