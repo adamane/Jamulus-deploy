@@ -58,8 +58,12 @@ jobs:
 
         - name: Build and push Docker image
           uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+          id: docker_build
           with:
             context: .
             push: True 
-            tags: ghcr.io/adamane/jamulus_contakt:${{ steps.bash-regex.output.VERSION }}
+            tags: ghcr.io/adamane/jamulus_contakt:/${{ steps.bash-regex.output.VERSION }}
             labels: ${{ steps.meta.outputs.labels }}
+        
+        - name: Image digest 
+          run: echo ${{ steps.docker_build.outputs.digest }}
