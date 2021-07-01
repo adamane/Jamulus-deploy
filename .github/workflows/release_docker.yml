@@ -63,8 +63,7 @@ jobs:
             context: .
             push: True
             labels: ${{ steps.meta.outputs.labels }} 
-            tags: | 
-            adamane/jamulus_contakt:${{ steps.bash-regex.output.VERSION }}
+            tags: adamane/jamulus_contakt:${{ steps.bash-regex.output.VERSION }}
             
         
         - name: Image digest 
