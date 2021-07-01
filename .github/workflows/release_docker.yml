@@ -61,9 +61,11 @@ jobs:
           id: docker_build
           with:
             context: .
-            push: True 
-            tags: ghcr.io/adamane/jamulus_contakt:/${{ steps.bash-regex.output.VERSION }}
-            labels: ${{ steps.meta.outputs.labels }}
+            push: True
+            labels: ${{ steps.meta.outputs.labels }} 
+            tags: | 
+            adamane/jamulus_contakt:${{ steps.bash-regex.output.VERSION }}
+            
         
         - name: Image digest 
           run: echo ${{ steps.docker_build.outputs.digest }}
