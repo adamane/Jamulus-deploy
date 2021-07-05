@@ -48,7 +48,8 @@ jobs:
           id: bash-regex
           run: |
             overwrite=$(cat Docker-tag-overwrite)
-            if [ $overwrite != "" ]
+            overwrite=${overwrite%$'\r\n'}
+            if [ -n $overwrite ]
             then
               echo "debug"
               echo "$overwrite"
