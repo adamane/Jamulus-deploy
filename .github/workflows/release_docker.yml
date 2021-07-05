@@ -53,6 +53,7 @@ jobs:
               echo "::set-output name=VERSION::$overwrite"
             else
               version=$(grep -oP "ENV JAMULUS_VERSION\s+\K\S+" Dockerfile)
+              echo "hallo" + $version
               echo "::set-output name=VERSION::$version"
             fi
 
