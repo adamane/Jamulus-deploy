@@ -51,6 +51,7 @@ jobs:
             if [ -n $overwrite ]
             then
               echo "debug"
+              echo "$overwrite"
               echo "::set-output name=VERSION::$overwrite"
             else
               version=$(grep -oP "ENV JAMULUS_VERSION\s+\K\S+" Dockerfile)
