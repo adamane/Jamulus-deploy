@@ -2,7 +2,7 @@
 # check it out at github.com/grundic/jamulus-docker
 FROM alpine:3.11 as builder
 
-ENV JAMULUS_VERSION 3_8_1
+ENV JAMULUS_VERSION 3_9_0
 
 RUN \
  echo "**** updating system packages ****" && \
