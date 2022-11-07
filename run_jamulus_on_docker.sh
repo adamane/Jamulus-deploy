@@ -20,8 +20,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 sudo apt upgrade -y
 
 
-docker pull ghcr.io/adamane/jamulus_contakt:3_7_0 # Still download this for legacy
-docker pull ghcr.io/adamane/jamulus_contakt:3_8_1
+docker pull ghcr.io/adamane/jamulus_contakt:3_8_1 # Still download this for legacy
+docker pull ghcr.io/adamane/jamulus_contakt:3_9_0
 mkdir jam
 mkdir jam/recordings
 curl "https://raw.githubusercontent.com/adamane/Jamulus-deploy/main/serverfiles/welcome.txt" > $(pwd)/jam/welcome.txt
